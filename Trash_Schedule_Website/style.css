@@ -1,0 +1,22 @@
+h1{
+    display: block;
+    text-align: center;
+    font-size: 2em;
+    font-family: "Comic Sans";
+}
+body{
+    font-size: 2em;
+    font-family:'Times New Roman';
+    font-style:italic;
+    margin: 0px; 
+    padding: 0px; 
+}
+
+#my_p{
+    font-size: 2.5em;
+}
+
+#logo{
+    display:block; 
+    margin: auto; 
+}
