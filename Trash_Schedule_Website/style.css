@@ -1,16 +1,32 @@
 h1{
     display: block;
     text-align: center;
-    font-size: 2em;
+    font-size: 3em;
     font-family: "Comic Sans";
+    font-style: bold;
 }
-body{
-    font-size: 2em;
-    font-family:'Times New Roman';
-    font-style:italic;
-    margin: 0px; 
-    padding: 0px; 
+
+h3{
+    font-family: "Comic Sans";
+    font-weight: 600;
+    font-style: italic;
+    font-size: large;
 }
+
+label{
+    text-align: center;
+    justify-content: center;
+    display: inline-block;
+    padding-left: 35%;
+}
+
+button{
+    font-size: large;
+    background-color:aliceblue;
+    border-radius: 15%;
+    align-content: center;
+}
+
 
 #my_p{
     font-size: 2.5em;
