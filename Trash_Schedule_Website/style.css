@@ -7,9 +7,9 @@ h1{
 }
 
 h3{
-    font-family: "Comic Sans";
+    font-family: "Times New Roman";
     font-weight: 600;
-    font-style: italic;
+    font-style: bold;
     font-size: large;
 }
 
@@ -24,9 +24,13 @@ button{
     font-size: large;
     background-color:aliceblue;
     border-radius: 15%;
-    align-content: center;
 }
 
+#testo1{
+    display: inline;
+    padding-left: 40%;
+    padding-right: 2%;
+}
 
 #my_p{
     font-size: 2.5em;
