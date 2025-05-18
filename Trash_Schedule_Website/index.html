@@ -38,7 +38,7 @@
                             <tr style = "background-color: aliceblue;">
                                 <th>Paper</th>
                                 <th id = "Paper_Sunday">-</th>
-                                <th id = "1" class ="1">-</th>
+                                <th id ="testo">-</th>
                                 <th>-</th>
                                 <th>-</th>
                                 <th>-</th>
@@ -48,7 +48,7 @@
                             <tr style = "background-color: aliceblue;">
                                 <th>Metal</th>
                                 <th>-</th>
-                                <th id = "1" class ="1">-</th>
+                                <th id ="testo">-</th>
                                 <th>-</th>
                                 <th>-</th>
                                 <th>-</th>
@@ -58,7 +58,7 @@
                             <tr style = "background-color: aliceblue;">
                                 <th>Garbage</th>
                                 <th>-</th>
-                                <th id = "1" class ="1">-</th>
+                                <th id ="testo">-</th>
                                 <th>-</th>
                                 <th>-</th>
                                 <th>-</th>
@@ -72,25 +72,28 @@
             
             <br>
 
+            <form id = "test_server">
+                <label  for = "address" align="center" style="text-align: center;margin-left: 7%;">Street Address </label>
 
-            <label  for = "address" align="center" style="text-align: center;margin-left: 7%;">Street Address </label>
-
-            <!--<br> stands for line break, or next line. Similar to \n in python and c-->
-            <input type = "text" id = "address" placeholder="132 Elm Street 07208" name = "address"><br></br>
-           <!-- <button id ="mySubmit"> <big>submit</big></button> -->
+                <!--<br> stands for line break, or next line. Similar to \n in python and c-->
+                <input type = "text" id = "address" placeholder="132 Elm Street 07208" name = "address" required><br></br>
+                <!-- <button id ="mySubmit"> <big>submit</big></button> -->
 
 
-            <div style="position: absolute;left: 48.5%;">
+                <div style="position: absolute;left: 45.5%;">
 
-            <input type="submit" id = "mySubmit">
-            
-            </div>
-            
+                <button type="submit" align="center">Check Trash</button>
+                <button type="reset" align = "center">Reset</button>
+                </div>
+
+
+                <h3 style ="text-align: center" id = "cmon"></h3>
+                <h3 style = "text-align: center" id = "com3"></h3>
+                
+                <br>
+                <h3 style="text-align: center;" id = "displayed_date"></h3>
+            </form>
             <br>
-
-            <h3 style="text-align: center;" id = "com2"></h3>
-            <h3 style ="text-align: center" id = "cmon"></h3>
-            <h3 style = "text-align: center" id = "com3"></h3>
 
             </main>
 
