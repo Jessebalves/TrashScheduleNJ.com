@@ -10,4 +10,6 @@ MongoDB video: https://www.youtube.com/watch?v=c2M-rlkkT5o&list=PLZPZq0r_RZOPP5Y
 
 MySQL video: https://www.youtube.com/watch?v=5OdVJbNCSso&list=PLZPZq0r_RZOPP5Yjt6IqgytMRY5uLt4y3&index=5  
 
-PHP video: https://www.youtube.com/watch?v=zZ6vybT1HQs&list=PLZPZq0r_RZOPP5Yjt6IqgytMRY5uLt4y3&index=6  
+PHP video: https://www.youtube.com/watch?v=zZ6vybT1HQs&list=PLZPZq0r_RZOPP5Yjt6IqgytMRY5uLt4y3&index=6   
+
+Flask tutorial (Python backend) : https://www.geeksforgeeks.org/flask-tutorial/  
