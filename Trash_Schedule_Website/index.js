@@ -40,6 +40,24 @@ document.getElementById('test_server').addEventListener('submit', async (a) => {
     a.preventDefault();
     const street_address = document.getElementById('address').value;
     console.log(street_address);
+    console.log("Request should be sent now");
+
+
+    fetch('http://localhost:5000/data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ key: street_address })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Successful',data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
 })
 
 
