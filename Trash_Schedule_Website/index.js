@@ -1,26 +1,35 @@
 const date = new Date(); 
 
-//Dictionary - Not sure if this will be used
-let myDictionary = new Map();
-myDictionary.set(0, "Sunday");
-myDictionary.set(1, "Monday");
+//Dictionary
+let dayDictionary = new Map();
+dayDictionary.set(0, "Sunday");
+dayDictionary.set(1, "Monday");
+dayDictionary.set(2, "Tuesday");
+dayDictionary.set(3, "Wednesday");
+dayDictionary.set(4, "Thursday");
+dayDictionary.set(5, "Friday");
+dayDictionary.set(6, "Saturday")
 
-console.log(myDictionary);
+console.log(dayDictionary);
 
 //day of the week 0-6 (Ex. Monday is 1)
 const number_day = date.getDay();
+
 //Actual day of the month (Ex. the 12th)
 let month_day = date.getDate();
-//Month number
+
+//Month number (Ex. March is 3)
 let month = date.getMonth()+1; 
-//Year number
+
+//Year number (Ex. 2025)
 const year = date.getFullYear();
 
-
+//Combining all the date variables to create a Full date string (Ex. 4/12/2025)
 const full_date = (String(month)+ "/" + String(month_day)+ "/" + String(year));
 
 console.log(number_day);
 
+//This will be printed in the console on JavaScript
 console.log(month)
 console.log(month_day)
 console.log(year);
@@ -28,8 +37,8 @@ console.log(year);
 console.log("Current date:", full_date);
 document.getElementById("displayed_date").textContent= "Current Date: "+ full_date;
 
-//Associated with changing table elements to "H"
-const holiday_dates = document.querySelectorAll('#testo');
+//Associated with changing table elements to "H" when it is a Holiday
+const holiday_dates = document.querySelectorAll('#Monday');
 holiday_dates.forEach(holiday_dates => {
     holiday_dates.textContent = "H";
     console.log("This should appear 3 times");
