@@ -1,25 +1,27 @@
 const date = new Date(); 
+let isHoliday = false; 
 
 //Dictionary
-let dayDictionary = new Map();
-dayDictionary.set(0, "Sunday");
-dayDictionary.set(1, "Monday");
-dayDictionary.set(2, "Tuesday");
-dayDictionary.set(3, "Wednesday");
-dayDictionary.set(4, "Thursday");
-dayDictionary.set(5, "Friday");
-dayDictionary.set(6, "Saturday")
-
-console.log(dayDictionary);
+let dayMap = new Map();
+dayMap.set(0, "Sunday");
+dayMap.set(1, "Monday");
+dayMap.set(2, "Tuesday");
+dayMap.set(3, "Wednesday");
+dayMap.set(4, "Thursday");
+dayMap.set(5, "Friday");
+dayMap.set(6, "Saturday")
 
 //day of the week 0-6 (Ex. Monday is 1)
-const number_day = date.getDay();
+//const number_day = date.getDay();
+let number_day = 5; 
 
 //Actual day of the month (Ex. the 12th)
-let month_day = date.getDate();
+//let month_day = date.getDate();
+let month_day = 4; 
 
 //Month number (Ex. March is 3)
-let month = date.getMonth()+1; 
+//let month = date.getMonth()+1; 
+let month = 7; 
 
 //Year number (Ex. 2025)
 const year = date.getFullYear();
@@ -27,22 +29,59 @@ const year = date.getFullYear();
 //Combining all the date variables to create a Full date string (Ex. 4/12/2025)
 const full_date = (String(month)+ "/" + String(month_day)+ "/" + String(year));
 
-console.log(number_day);
-
 //This will be printed in the console on JavaScript
-console.log(month)
-console.log(month_day)
-console.log(year);
+console.log("Month: "+month)
+console.log("Day of the month: "+month_day)
+console.log("Year: "+year);
  
 console.log("Current date:", full_date);
 document.getElementById("displayed_date").textContent= "Current Date: "+ full_date;
 
-//Associated with changing table elements to "H" when it is a Holiday
-const holiday_dates = document.querySelectorAll('#Monday');
-holiday_dates.forEach(holiday_dates => {
+//New Years Eve
+if (month == 1 && month_day == 1) {
+          console.log("New Years Eve");
+          isHoliday = true;
+}
+
+    // Memorial Day
+    else if (month == 5 && number_day == 2 && week_of_month == 4) {
+        Console.log("Memorial Day");
+        isHoliday = true;
+}
+
+    // 4th of July / Independence Day (Good)
+    else if (month == 7 && month_day == 4) {
+        console.log("Independence Day");
+        isHoliday = true;
+}
+		
+	// Labor day, month = september, number_day = monday, rando = week of month
+    else if (month == 9 && number_day == 2 && week_of_month == 1) {
+        console.log("Labor Day");
+        isHoliday = true;
+}
+    // Thanksgiving (Good)
+    else if (month == 11 && number_day == 5 && week_of_month == 4) {
+    	console.log("Happy Thanksgiving");
+        isHoliday = true;
+		}
+    // Christmas (Good)
+   else if (month == 12 && month_day == 25) {
+        console.log("Christmas");
+        isHoliday = true;
+   }
+
+console.log("Checking if it is a holiday: "+isHoliday);
+
+if(isHoliday == true){
+    let day_found = dayMap.get(number_day);
+    let new_string = "#"+ day_found + "";
+    const holiday_dates = document.querySelectorAll(new_string);
+    holiday_dates.forEach(holiday_dates => {
     holiday_dates.textContent = "H";
     console.log("This should appear 3 times");
 })
+}
 
 //function associated with form on index.html
 document.getElementById('test_server').addEventListener('submit', async (a) => {
@@ -68,36 +107,3 @@ document.getElementById('test_server').addEventListener('submit', async (a) => {
     });
 
 })
-
-
-    //document.getElementById("com2").textContent="Address Entered: "+street_address; 
-    //document.getElementById("cmon").textContent= "Current Date: "+ full_date;
-    
- //   if (month == 1 && month_day == 1) {
- //       console.log("New Years Eve");
-  //      console.log(number_day);
- //       document.getElementById("com3").textContent="It is New Years Eve. No Trash for today.";
-//		}
-
-    // Memorial Day(Test This)
-    //else if (month == 5 && number_day == 2 && week_of_month == 4) {
-        //	Console.log("Memorial Day");
-    //	}
-
-    // 4th of July / Independence Day (Good)
-//    else if (month == 7 && month_day == 4) {
-  //      document.getElementById("com3").textContent="It is 4th of July. No Trash for today.";
-		
-	// Labor day, month = september, number_day = monday, rando = week of month
-	// (Test This)
-    //else if (month == 9 && number_day == 2 && week_of_month == 1) {
-        //	Console.log("Labor Day");
-//		}
-    // Thanksgiving (Good)
-    //else if (month == 11 && number_day == 5 && week_of_month == 4) {
-    //	Console.log("Happy Thanksgiving");
-//		}
-    // Christmas (Good)
- //   else if (month == 12 && month_day == 25) {
-//	    console.log("Christmas");
-//
