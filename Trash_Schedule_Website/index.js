@@ -12,16 +12,16 @@ dayMap.set(5, "Friday");
 dayMap.set(6, "Saturday")
 
 //day of the week 0-6 (Ex. Monday is 1)
-//const number_day = date.getDay();
-let number_day = 5; 
+//const dayMapId = date.getDay();
+let dayMapId = 4; 
 
 //Actual day of the month (Ex. the 12th)
 //let month_day = date.getDate();
-let month_day = 1; 
+let month_day = 22; 
 
 //Month number (Ex. March is 3)
 //let month = date.getMonth()+1; 
-let month = 1; 
+let month = 11; 
 
 //Year number (Ex. 2025)
 const year = date.getFullYear();
@@ -34,7 +34,10 @@ const full_date = (String(month)+ "/" + String(month_day)+ "/" + String(year));
 //var day = 5;
 
 //Variable associated with the week of the given month
-var weekOfMonth = Math.ceil((month_day - 1 - month) / 7)+1;
+const startOfMonth = new Date(year, month, 1);
+const startDay = startOfMonth.getDay();
+const adjustedDate = month_day + startDay;
+var weekOfMonth = Math.ceil(adjustedDate / 7);
 console.log("Week of the month:", weekOfMonth);
 
 //This will be printed in the console on JavaScript
@@ -54,8 +57,8 @@ if (month == 1 && month_day == 1) {
 }
 
     // Memorial Day
-    else if (month == 5 && number_day == 2 && week_of_month == 4) {
-        Console.log("Memorial Day");
+    else if (month == 5 && dayMapId == 1 && weekOfMonth == 4) {
+        console.log("Memorial Day");
         isHoliday = true;
 }
 
@@ -65,13 +68,13 @@ if (month == 1 && month_day == 1) {
         isHoliday = true;
 }
 		
-	// Labor day, month = september, number_day = monday, rando = week of month
-    else if (month == 9 && number_day == 2 && week_of_month == 1) {
+	// Labor day, month = september, dayMapId = monday, rando = week of month
+    else if (month == 9 && dayMapId == 1 && weekOfMonth == 1) {
         console.log("Labor Day");
         isHoliday = true;
 }
     // Thanksgiving (Good)
-    else if (month == 11 && number_day == 5 && week_of_month == 4) {
+    else if (month == 11 && dayMapId == 4 && weekOfMonth == 4) {
     	console.log("Happy Thanksgiving");
         isHoliday = true;
 		}
@@ -86,7 +89,7 @@ console.log("Checking if it is a holiday: "+isHoliday);
 
 //If it is a Holiday, this will mark table entries associated with that day with an "X"
 if(isHoliday == true){
-    let day_found = dayMap.get(number_day);
+    let day_found = dayMap.get(dayMapId);
     let new_string = "#"+ day_found + "";
     const holiday_dates = document.querySelectorAll(new_string);
     holiday_dates.forEach(holiday_dates => {
