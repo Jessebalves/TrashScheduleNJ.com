@@ -12,16 +12,16 @@ dayMap.set(5, "Friday");
 dayMap.set(6, "Saturday")
 
 //day of the week 0-6 (Ex. Monday is 1)
-//const dayMapId = date.getDay();
-let dayMapId = 4; 
+const dayMapId = date.getDay();
+//let dayMapId = 2; 
 
 //Actual day of the month (Ex. the 12th)
-//let month_day = date.getDate();
-let month_day = 22; 
+let month_day = date.getDate();
+//let month_day = 3; 
 
 //Month number (Ex. March is 3)
-//let month = date.getMonth()+1; 
-let month = 11; 
+let month = date.getMonth()+1; 
+//let month = 9; 
 
 //Year number (Ex. 2025)
 const year = date.getFullYear();

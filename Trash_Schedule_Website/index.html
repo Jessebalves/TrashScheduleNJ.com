@@ -20,9 +20,9 @@
 
             <main>
             <!--<img src=" https://www.pngplay.com/wp-content/uploads/7/New-Jersey-Map-Download-Free-PNG.png" id = "logo"  alt = "logo for website">-->
-
+            
                         <!--Table-->
-                        <table align="center" width = "950px" height = "100px" style = "border:2px solid; background-color: lightblue;">
+                        <table id = "trash_table" align="center" width = "50%" height = "100%" style = "border:2px solid; background-color: lightblue;">
                             <!--Table Row-->
                             <tr align="center" style = "background-color: lightblue;">
                                 <!--Table Header-->
@@ -33,7 +33,7 @@
                                 <th width= "150">Wednesday</th>
                                 <th width= "150">Thursday</th>
                                 <th width= "150">Friday</th>
-                                <th width= "150">Saturday</th>
+                                <th width ="150">Saturday</th>
                             </tr>
                             <tr style = "background-color: aliceblue;">
                                 <th>Paper</th>
@@ -69,22 +69,21 @@
                                 
                             </tr>
                         </table>
-            
+                        
             <br>
 
             <!--Form that is sent to test_server.py-->
             <form id = "test_server">
-                <label  for = "address" align="center" style="text-align: center;margin-left: 7%;">Street Address </label>
+                <label  for = "address" align="center" style="text-align: center;margin-left: 5%;">Street Address </label>
 
                 <!--<br> stands for line break, or next line. Similar to \n in python and c-->
                 <input type = "text" id = "address" placeholder="132 Elm Street 07208" name = "address" required><br></br>
                 <!-- <button id ="mySubmit"> <big>submit</big></button> -->
 
 
-                <div style="position: absolute;left: 45.5%;">
-
-                <button type="submit" align="center">Check Trash</button>
-                <button type="reset" align = "center">Reset</button>
+                <div id = "table_buttons" style="position: absolute;left: 45%;">
+                <button type="submit" style="width: 100%;">Check Trash</button>
+                <button type="reset" style = "width:100%;">Reset</button>
                 </div>
 
 
@@ -95,13 +94,9 @@
                 <h3 style="text-align: center;" id = "displayed_date"></h3>
             </form>
 
-            <br>
+            <hr>
 
             </main>
-
-            <footer>
-
-            </footer>
             <!--<p id = "my_p">This is a paragraph chief</p>-->
             <script src="index.js"></script>
             </body>
