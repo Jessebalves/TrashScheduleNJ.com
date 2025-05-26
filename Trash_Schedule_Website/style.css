@@ -43,6 +43,6 @@ button{
 /* This section of CSS is designated for phone screen viewing */
 @media screen and (max-width:600px){
     #trash_table{
-        font-size: small;
+        font-size: 90%;
     }
 }
