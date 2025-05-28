@@ -29,39 +29,19 @@ const full_date = (String(month)+ "/" + String(month_day)+ "/" + String(year));
 
 //Start day of the given month(Ex. Tuesday May 1st, 2025)
 const startOfMonth = new Date(year, month - 1, 1);
-const endOfMonth = new Date(year, month, 0);
 console.log("Beginning of Month:"+startOfMonth);
-console.log(endOfMonth);
 
 //This gets the DayID associated with the start of the month
 var startDay = startOfMonth.getDay();
+
+const endOfMonth = new Date(year, month, 0);
+console.log(endOfMonth);
 var endDay = endOfMonth.getDay(); 
 let counter = 0;
 
-//If start day is not sunday, we count until until start day is equal to 7, indicating its the first sunday in the month
-//This means a start of a new week
-
-if(month == 5 || month == 9 || month == 11){
-    while(startDay > 0 && startDay < 7){
-        //console.log(startDay);
-        counter += 1; 
-        startDay = startDay + 1; 
-}
-}
-
-console.log("Counter: ",counter);
-console.log("Start day: "+startDay);
-
-//Adjusted date is the number of days passed since the first sunday in the month
-var adjustedDate = month_day - counter; 
-console.log("Adjusted Date: ",adjustedDate);
-//console.log("Week of month unrounded: ",month_day/7);
-
 //Variable associated with the week of the given month
-var weekOfMonth = Math.ceil(adjustedDate / 7);
-var testWeekofMonth = (adjustedDate/7);
+var weekOfMonth = Math.ceil(month_day / 7);
 console.log("Week of the month:", weekOfMonth);
-console.log(testWeekofMonth);
 
 //This will be printed in the console on JavaScript
 console.log("Month: "+month)
@@ -70,71 +50,86 @@ console.log("Year: "+year);
  
 console.log("Current date:",dayMap.get(dayMapId), full_date);
 document.getElementById("displayed_date").textContent= "Date: "+dayMap.get(dayMapId) + " "+full_date;
-let countervari = 3; 
 
 //This checks if the current date is a holiday
 //If it is a holiday, is Holiday will be True, otherwise, it is False 
 //New Years Eve
-if (month == 1 && weekOfMonth == 1) {
+if (month == 1 && month_day == 1 && weekOfMonth ==1 ) {
     console.log("New Years Eve");
-    let testo_day = dayMap.get(startDay);
-    let new_string = "#"+ testo_day + "";
-    if(adjustedDate + startDay > 7){
-        console.log("Not a holiday"); 
-    }
-    else{
-        const holiday_dates = document.querySelectorAll(new_string);
-        holiday_dates.forEach(holiday_dates => {
-        holiday_dates.textContent = "H";})
-        isHoliday = true;
-    }
+    document.getElementById("com3").textContent="Happy New Years!";
+    let fourth = new Date(year, 1,1);
+    let testo = date.getDay(fourth);
+    document.getElementById("com2").textContent="No trash on "+dayMap.get(testo);
+    isHoliday = true;
 }
 
     // Memorial Day
-    else if (month == 5 && weekOfMonth == 4){
+    else if (month == 5){
         console.log("Memorial Day");
-        let day_found = "Monday";
+        console.log(endDay);
+        while(endDay!=1){
+            if(endDay ==0){
+                endDay = 7; 
+            }
+            endDay = endDay - 1;
+            counter = counter + 1; 
+            console.log(endDay);
+        }
+        if(month_day == 31 - counter){
+            document.getElementById("com3").textContent="Happy Memorial Day!";
+            document.getElementById("com2").textContent="No trash on Monday";
+        }
+       /* let day_found = "Monday";
         let new_string = "#"+ day_found + "";
         const holiday_dates = document.querySelectorAll(new_string);
         holiday_dates.forEach(holiday_dates => {
-        holiday_dates.textContent = "H";})
+        holiday_dates.textContent = "H";})*/
         isHoliday = true; 
 }
 
     // 4th of July / Independence Day 
-    else if (month == 7 && weekOfMonth == 1) {
+    else if (month == 7 && month_day == 4) {
         console.log("Independence Day");
+        document.getElementById("com3").textContent="Happy 4th of July!";
+        let fourth = new Date(year, 6,4);
+        let testo = date.getDay(fourth);
+        document.getElementById("com2").textContent="No trash on "+dayMap.get(testo);
         isHoliday = true;
 }
 		
-	// Labor day, month = september, dayMapId = monday, rando = week of month
-    else if (month == 9 && weekOfMonth == 1) {
+	// Labor day
+    else if (month == 9 && dayMapId == 1 && weekOfMonth == 1) {
         console.log("Labor Day");
-        let day_found = "Monday";
+        document.getElementById("com3").textContent="Happy Labor Day!";
+        document.getElementById("com2").textContent="No trash on Monday";
+        /*let day_found = "Monday";
         let new_string = "#"+ day_found + "";
         const holiday_dates = document.querySelectorAll(new_string);
         holiday_dates.forEach(holiday_dates => {
-        holiday_dates.textContent = "H";})
+        holiday_dates.textContent = "H";})*/
         isHoliday = true;
 }
     // Thanksgiving
-    else if (month == 11 && weekOfMonth == 4) {
+    else if (month == 11 && weekOfMonth == 4 && dayMapId == 4) {
     	console.log("Happy Thanksgiving");
-        let day_found = "Thursday";
-        let new_string = "#"+ day_found + "";
-        const holiday_dates = document.querySelectorAll(new_string);
-        holiday_dates.forEach(holiday_dates => {
-        holiday_dates.textContent = "H";})
+        document.getElementById("com3").textContent="Happy Thanksgiving!";
+        let fourth = new Date(year, 11,25);
+        let testo = date.getDay(fourth);
+        document.getElementById("com2").textContent="No trash on "+dayMap.get(testo);
         isHoliday = true;
 		}
     
-    // Christmas (Good)
-   else if (month == 12) {
+    // Christmas 
+   else if (month == 12 && month_day == 25) {
         console.log("Christmas");
+        document.getElementById("com3").textContent="Merry Christmas!";
+        let fourth = new Date(year, 11,25);
+        let testo = date.getDay(fourth);
+        document.getElementById("com2").textContent="No trash on "+dayMap.get(testo);
         isHoliday = true; 
    }
 
-console.log("Checking if the week contains a holiday: "+isHoliday);
+console.log("Checking if this month has a holiday: "+isHoliday);
 
 //function associated with form on index.html
 document.getElementById('test_server').addEventListener('submit', async (a) => {
