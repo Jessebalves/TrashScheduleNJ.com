@@ -9,8 +9,9 @@ Daniel: Daniellordelo@gmail.com
 # Instructions to Build
 1) Set up MySQL database
 2) Link Python script to database to retrieve information
-3) Add more information to about.html
-4) Fix elements resizing and moving on window resize on contact.html
+3) Fix elements associated with the form on index.html, they are moving on window resize
+4) Add more information to about.html
+5) Fix elements resizing and moving on window resize on contact.html
 
 # Instructions to Run
 1) First, test_server.py must be running at all times to recieve requests from the front end and access the MySQL database
