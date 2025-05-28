@@ -29,33 +29,39 @@ const full_date = (String(month)+ "/" + String(month_day)+ "/" + String(year));
 
 //Start day of the given month(Ex. Tuesday May 1st, 2025)
 const startOfMonth = new Date(year, month - 1, 1);
+const endOfMonth = new Date(year, month, 0);
 console.log("Beginning of Month:"+startOfMonth);
+console.log(endOfMonth);
 
 //This gets the DayID associated with the start of the month
 var startDay = startOfMonth.getDay();
+var endDay = endOfMonth.getDay(); 
 let counter = 0;
 
 //If start day is not sunday, we count until until start day is equal to 7, indicating its the first sunday in the month
 //This means a start of a new week
 
-while(startDay > 0 && startDay < 7){
+if(month == 5 || month == 9 || month == 11){
+    while(startDay > 0 && startDay < 7){
         //console.log(startDay);
         counter += 1; 
-        startDay = startDay+1; 
+        startDay = startDay + 1; 
 }
-
+}
 
 console.log("Counter: ",counter);
 console.log("Start day: "+startDay);
 
 //Adjusted date is the number of days passed since the first sunday in the month
-const adjustedDate = month_day - counter; 
+var adjustedDate = month_day - counter; 
 console.log("Adjusted Date: ",adjustedDate);
 //console.log("Week of month unrounded: ",month_day/7);
 
 //Variable associated with the week of the given month
 var weekOfMonth = Math.ceil(adjustedDate / 7);
+var testWeekofMonth = (adjustedDate/7);
 console.log("Week of the month:", weekOfMonth);
+console.log(testWeekofMonth);
 
 //This will be printed in the console on JavaScript
 console.log("Month: "+month)
@@ -64,6 +70,7 @@ console.log("Year: "+year);
  
 console.log("Current date:",dayMap.get(dayMapId), full_date);
 document.getElementById("displayed_date").textContent= "Date: "+dayMap.get(dayMapId) + " "+full_date;
+let countervari = 3; 
 
 //This checks if the current date is a holiday
 //If it is a holiday, is Holiday will be True, otherwise, it is False 
@@ -72,11 +79,15 @@ if (month == 1 && weekOfMonth == 1) {
     console.log("New Years Eve");
     let testo_day = dayMap.get(startDay);
     let new_string = "#"+ testo_day + "";
-    console.log("Currently testing: "+counter);
-    const holiday_dates = document.querySelectorAll(new_string);
-    holiday_dates.forEach(holiday_dates => {
-    holiday_dates.textContent = "H";})
-    isHoliday = true;
+    if(adjustedDate + startDay > 7){
+        console.log("Not a holiday"); 
+    }
+    else{
+        const holiday_dates = document.querySelectorAll(new_string);
+        holiday_dates.forEach(holiday_dates => {
+        holiday_dates.textContent = "H";})
+        isHoliday = true;
+    }
 }
 
     // Memorial Day
@@ -90,7 +101,7 @@ if (month == 1 && weekOfMonth == 1) {
         isHoliday = true; 
 }
 
-    // 4th of July / Independence Day (Good)
+    // 4th of July / Independence Day 
     else if (month == 7 && weekOfMonth == 1) {
         console.log("Independence Day");
         isHoliday = true;
@@ -106,7 +117,7 @@ if (month == 1 && weekOfMonth == 1) {
         holiday_dates.textContent = "H";})
         isHoliday = true;
 }
-    // Thanksgiving (Good)
+    // Thanksgiving
     else if (month == 11 && weekOfMonth == 4) {
     	console.log("Happy Thanksgiving");
         let day_found = "Thursday";
@@ -118,9 +129,9 @@ if (month == 1 && weekOfMonth == 1) {
 		}
     
     // Christmas (Good)
-   else if (month == 12 && month_day == 25) {
+   else if (month == 12) {
         console.log("Christmas");
-        isHoliday = true;
+        isHoliday = true; 
    }
 
 console.log("Checking if the week contains a holiday: "+isHoliday);
