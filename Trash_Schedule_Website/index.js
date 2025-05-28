@@ -33,15 +33,30 @@ console.log("Beginning of Month:"+startOfMonth);
 
 //This gets the DayID associated with the start of the month
 var startDay = startOfMonth.getDay();
+console.log("Starting day: "+startDay);
 
 const endOfMonth = new Date(year, month, 0);
 console.log(endOfMonth);
 var endDay = endOfMonth.getDay(); 
 let counter = 0;
 
+let first_day = 1; 
+let weekOfMonth = 1; 
+
+while(first_day < month_day){
+    startDay = startDay + 1; 
+    first_day = first_day + 1; 
+    if(startDay==7){
+        weekOfMonth = weekOfMonth + 1; 
+        startDay = 0;
+    }
+}
+
+console.log("Week of month: "+weekOfMonth);
+
 //Variable associated with the week of the given month
-var weekOfMonth = Math.ceil(month_day / 7);
-console.log("Week of the month:", weekOfMonth);
+//var weekOfMonth = Math.ceil(month_day / 7);
+//console.log("Week of the month:", weekOfMonth);
 
 //This will be printed in the console on JavaScript
 console.log("Month: "+month)
@@ -66,14 +81,14 @@ if (month == 1 && month_day == 1 && weekOfMonth ==1 ) {
     // Memorial Day
     else if (month == 5){
         console.log("Memorial Day");
-        console.log(endDay);
+        //console.log(endDay);
         while(endDay!=1){
             if(endDay ==0){
                 endDay = 7; 
             }
             endDay = endDay - 1;
             counter = counter + 1; 
-            console.log(endDay);
+            //console.log(endDay);
         }
         if(month_day == 31 - counter){
             document.getElementById("com3").textContent="Happy Memorial Day!";
