@@ -1,6 +1,6 @@
 # Contact Information
 Jesse: Jessebalves@gmail.com  
-Daniel: Daniellordelo@gmail.com
+Daniel: daniel.lordelo@yahoo.com
 
 # Known Issues
 1) Holiday check is not working as intended
