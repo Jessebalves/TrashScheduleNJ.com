@@ -25,14 +25,22 @@ button{
     font-size: 1em;
 }
 
+
 #testo1{
-    display: inline;
-    padding-left: 40%;
-    padding-right: 2%;
+    display: inline-block;
+    margin: auto; 
+    width: 100%;
+    /*border:2px solid black;*/
+    text-align: center;
 }
 
 #my_p{
     font-size: 2.5em;
+}
+
+#GitHub_Icon{
+    display: inline-block;
+    border-radius: 50%; 
 }
 
 #logo{
