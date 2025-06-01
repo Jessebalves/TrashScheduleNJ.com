@@ -4,7 +4,7 @@ Daniel: daniel.lordelo@yahoo.com
 
 # Known Issues
 1) Holiday check is not working as intended
-2) WeekofMonth variable is not working as intended
+2) ~~WeekofMonth variable is not working as intended~~
 
 # Instructions to Build
 1) Set up MySQL database
