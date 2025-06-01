@@ -74,22 +74,21 @@
 
             <!--Form that is sent to test_server.py-->
             <form id = "test_server">
-                <label  for = "address" align="center" style="text-align: center;margin-left: 5%;">Street Address </label>
 
+                <div id = "testo2">
+                <label  for = "address"><b>Street Address: </b> </label>
                 <!--<br> stands for line break, or next line. Similar to \n in python and c-->
                 <input type = "text" id = "address" placeholder="132 Elm Street 07208" name = "address" required><br></br>
-                <!-- <button id ="mySubmit"> <big>submit</big></button> -->
+                </div>
 
-
-                <div id = "table_buttons" style="position: absolute;left: 45%;">
-                <button type="submit" style="width: 100%;">Check Trash</button>
-                <button type="reset" style = "width:100%;">Reset</button>
+                <div id = "table_buttons">
+                <button type="submit">Check Trash</button><br>
+                <button type="reset">Reset</button>
                 </div>
 
 
                 <h3 style ="text-align: center" id = "cmon"></h3>
                 
-                <br>
                 <h3 style="text-align: center;" id = "displayed_date"></h3>
                 <h3 style = "text-align: center" id = "com3"></h3>
                 <h3 style = "text-align: center" id = "com2"></h3>
@@ -98,6 +97,16 @@
             <hr>
 
             </main>
+            
+            <footer style = "text-align: center;">
+
+            <a href="mailto:jessebalves@gmail.com">Jessebalves@gmail.com</a><br>
+            <a href="mailto:daniellordelo@gmail.com">Daniellordelo@gmail.com</a><br>
+
+            Authors: Jesse Alves, Daniel Lordelo<br>
+            &copy; Copyright reserved<br>
+            </footer>
+
             <script src="index.js"></script>
             </body>
 </html>

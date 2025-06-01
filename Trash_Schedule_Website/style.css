@@ -22,7 +22,9 @@ label{
 
 button{
     background-color: lightblue;
-    font-size: 1em;
+    font-size: 90%;
+    font-weight: bold;
+    width:20%;
 }
 
 
@@ -48,9 +50,30 @@ button{
     margin: auto; 
 }
 
+#table_buttons{
+    text-align: center;
+    justify-content: center;  
+    align-items: center;  
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    font-size: 90%;
+    cursor: pointer;
+}
+
+#testo2{
+    align-items: center;
+    margin-left: 8%;
+}
+
 /* This section of CSS is designated for phone screen viewing */
 @media screen and (max-width:600px){
     #trash_table{
         font-size: 90%;
+    }
+    #testo2{
+        margin-left: -10%;
     }
 }
