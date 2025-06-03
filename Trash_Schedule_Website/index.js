@@ -37,6 +37,7 @@ console.log("Starting day: "+startDay);
 
 const endOfMonth = new Date(year, month, 0);
 console.log(endOfMonth);
+
 var endDay = endOfMonth.getDay(); 
 let counter = 0;
 
@@ -146,12 +147,14 @@ if (month == 1 && month_day == 1 && weekOfMonth ==1 ) {
 
 console.log("Checking if this month has a holiday: "+isHoliday);
 
+let testo = "";
+
 //function associated with form on index.html
 document.getElementById('test_server').addEventListener('submit', async (a) => {
     a.preventDefault();
     const street_address = document.getElementById('address').value;
-    console.log(street_address);
-    console.log("Request should be sent now");
+    /*console.log(street_address);
+    console.log("Request should be sent now");*/
 
 
     fetch('http://localhost:5000/data', {
@@ -164,9 +167,12 @@ document.getElementById('test_server').addEventListener('submit', async (a) => {
     .then(response => response.json())
     .then(data => {
         console.log('Successful',data);
+        let testo = data;
+        console.log(testo);
     })
     .catch(error => {
         console.error('Error:', error);
     });
 
 })
+
