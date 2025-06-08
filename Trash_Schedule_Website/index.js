@@ -55,10 +55,6 @@ while(first_day < month_day){
 
 console.log("Week of month: "+weekOfMonth);
 
-//Variable associated with the week of the given month
-//var weekOfMonth = Math.ceil(month_day / 7);
-//console.log("Week of the month:", weekOfMonth);
-
 //This will be printed in the console on JavaScript
 console.log("Month: "+month)
 console.log("Day of the month: "+month_day)
@@ -70,12 +66,24 @@ document.getElementById("displayed_date").textContent= "Date: "+dayMap.get(dayMa
 //This checks if the current date is a holiday
 //If it is a holiday, is Holiday will be True, otherwise, it is False 
 //New Years Eve
-if (month == 1 && month_day == 1 && weekOfMonth ==1 ) {
+if (month == 1 && weekOfMonth == 1) {
     console.log("New Years Eve");
-    document.getElementById("com3").textContent="Happy New Years!";
-    let fourth = new Date(year, 1,1);
-    let testo = date.getDay(fourth);
-    document.getElementById("com2").textContent="No trash on "+dayMap.get(testo);
+
+    //Variable associated with the start of month day number, example, this month starts with 3
+    //meaning this month starts on a wednesday, so this varibale is 3
+    let first_day_of_jan = startOfMonth.getDay();
+
+    //Look through daymap, and get the name day associated the number assigned to first_day_of_jan variable, ex. 3 = wednesday
+    let day_found = dayMap.get(first_day_of_jan);
+
+    //Marks the table with an H on the corresponding day of a holiday
+    //For example, if there is a holiday on Thursday this week
+    //Thursday column should be filled with H all week
+    console.log("This is what im testing: ",day_found);
+    let new_string = "#"+ day_found + "";
+    const holiday_dates = document.querySelectorAll(new_string);
+    holiday_dates.forEach(holiday_dates => {
+    holiday_dates.textContent = "H";})
     isHoliday = true;
 }
 
@@ -104,12 +112,47 @@ if (month == 1 && month_day == 1 && weekOfMonth ==1 ) {
 }
 
     // 4th of July / Independence Day 
-    else if (month == 7 && month_day == 4) {
+    else if (month == 7) {
         console.log("Independence Day");
-        document.getElementById("com3").textContent="Happy 4th of July!";
+
+        //document.getElementById("com3").textContent="Happy 4th of July!";
+
+        let startofJuly = new Date(year,6,1)
+        let startOfJulyDay = startofJuly.getDay();
+        let weekFound = 1; 
+
+        //Full date associated with July 4th
+        //testo is the variable associated with July 4th's DayID 
         let fourth = new Date(year, 6,4);
-        let testo = date.getDay(fourth);
-        document.getElementById("com2").textContent="No trash on "+dayMap.get(testo);
+        let testo = fourth.getDay();
+
+        console.log("Full date of first day in July",startofJuly);
+        console.log("Starting day of July", startOfJulyDay);
+        console.log("Fourth", fourth);
+        console.log("Testo",testo);
+
+        //we can hardcode this, because its only possible
+        //for July 4th to either be in the 1st or 2nd week
+        while(startOfJulyDay != testo){
+            //marks the start of a new week, 7 = Sunday
+            if(startOfJulyDay == 7){
+                weekFound++; 
+                startOfJulyDay = 0; 
+            }
+            startOfJulyDay++; 
+        }
+
+        console.log("Independence Day was found in week: ", weekFound);
+        if(weekOfMonth == weekFound){
+            let day_found = dayMap.get(testo);
+            console.log(day_found);
+            let new_string = "#"+ day_found + "";
+            const holiday_dates = document.querySelectorAll(new_string);
+            holiday_dates.forEach(holiday_dates => {
+            holiday_dates.textContent = "H";})
+        }
+
+        //document.getElementById("com2").textContent="No trash on "+dayMap.get(testo);
         isHoliday = true;
 }
 		
@@ -126,10 +169,11 @@ if (month == 1 && month_day == 1 && weekOfMonth ==1 ) {
         isHoliday = true;
 }
     // Thanksgiving
-    else if (month == 11 && weekOfMonth == 4 && dayMapId == 4) {
+    else if (month == 11 && weekOfMonth == 4) {
     	console.log("Happy Thanksgiving");
         document.getElementById("com3").textContent="Happy Thanksgiving!";
         let fourth = new Date(year, 11,25);
+        console.log(fourth);
         let testo = date.getDay(fourth);
         document.getElementById("com2").textContent="No trash on "+dayMap.get(testo);
         isHoliday = true;
