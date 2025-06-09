@@ -33,7 +33,7 @@ console.log("Beginning of Month:"+startOfMonth);
 
 //This gets the DayID associated with the start of the month
 var startDay = startOfMonth.getDay();
-console.log("Starting day: "+startDay);
+console.log("Starting day: "+startDay+" "+ dayMap.get(startDay));
 
 const endOfMonth = new Date(year, month, 0);
 console.log(endOfMonth);
@@ -180,18 +180,51 @@ if (month == 1 && weekOfMonth == 1) {
 		}
     
     // Christmas 
-   else if (month == 12 && month_day == 25) {
+   else if (month == 12) {
         console.log("Christmas");
-        document.getElementById("com3").textContent="Merry Christmas!";
+        //document.getElementById("com3").textContent="Merry Christmas!";
+
+
+        //variables associated with full date of christmas that year
+        //and testo is equal to the name day christmas falls on 
         let fourth = new Date(year, 11,25);
-        let testo = date.getDay(fourth);
-        document.getElementById("com2").textContent="No trash on "+dayMap.get(testo);
+        let testo = fourth.getDay();
+
+
+        //variables needed to find the week
+        //christmas falls on 
+        let dayNumba = startOfMonth.getDay(); 
+        let first = 1; 
+        let christmas = 25;
+        let weekFoundDecember = 1; 
+
+        
+        while(first < christmas){
+            if(dayNumba == 7){
+                weekFoundDecember++;
+                dayNumba = 0; 
+            }
+            dayNumba++;
+            first++; 
+        }
+
+
+        console.log("Christmas falls on a:", dayMap.get(testo));
+        console.log("Chrismas was found in week: ",weekFoundDecember);
         isHoliday = true; 
+
+        //mark up the table with an H
+        if(weekOfMonth == weekFoundDecember){
+            let day_found = dayMap.get(testo);
+            let new_string = "#"+ day_found + "";
+            const holiday_dates = document.querySelectorAll(new_string);
+            holiday_dates.forEach(holiday_dates => {
+            holiday_dates.textContent = "H";})
+        }
    }
 
 console.log("Checking if this month has a holiday: "+isHoliday);
 
-let testo = "";
 
 //function associated with form on index.html
 document.getElementById('test_server').addEventListener('submit', async (a) => {
