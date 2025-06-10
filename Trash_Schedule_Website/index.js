@@ -169,11 +169,39 @@ if (month == 1 && weekOfMonth == 1) {
         isHoliday = true;
 }
     // Thanksgiving
-    else if (month == 11 && weekOfMonth == 4) {
+    else if (month == 11) {
     	console.log("Happy Thanksgiving");
-        document.getElementById("com3").textContent="Happy Thanksgiving!";
-        let fourth = new Date(year, 11,25);
+        //document.getElementById("com3").textContent="Happy Thanksgiving!";
+
+
+        let fourth = new Date(year, 10,25);
         console.log(fourth);
+
+        let ThursdaysSeen = 0; 
+        let WeekFoundInNov = 1; 
+        let startOfNov = startOfMonth.getDay(); 
+        console.log("Cmon: ",startOfNov);
+
+        while(ThursdaysSeen < 4){
+            if(startOfNov == 7){
+                WeekFoundInNov++; 
+                startOfNov = 0; 
+            }
+            if(startOfNov == 4){
+                ThursdaysSeen++;
+            }
+            startOfNov++;
+        }
+
+
+        if(weekOfMonth == WeekFoundInNov){
+            let day_found = "Thursday";
+            let new_string = "#"+ day_found + "";
+            const holiday_dates = document.querySelectorAll(new_string);
+            holiday_dates.forEach(holiday_dates => {
+            holiday_dates.textContent = "H";})
+        }
+
         let testo = date.getDay(fourth);
         document.getElementById("com2").textContent="No trash on "+dayMap.get(testo);
         isHoliday = true;
