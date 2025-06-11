@@ -87,7 +87,7 @@ if (month == 1 && weekOfMonth == 1) {
     isHoliday = true;
 }
 
-    // Memorial Day
+    // Memorial Day (Mdw)
     else if (month == 5){
         console.log("Memorial Day");
         //console.log(endDay);
@@ -103,6 +103,30 @@ if (month == 1 && weekOfMonth == 1) {
             document.getElementById("com3").textContent="Happy Memorial Day!";
             document.getElementById("com2").textContent="No trash on Monday";
         }
+
+        let MDW_Date = 31 - counter;
+        let MDW_Week = 1; 
+        let first_day_of_may = 1; 
+        let firstDayMay = startOfMonth.getDay();
+        //console.log("What im looking at: ", MDW_Date, firstDayMay);
+
+        while(first_day_of_may < MDW_Date){
+            if(firstDayMay == 7){
+                MDW_Week++;
+                firstDayMay = 0; 
+            }
+            firstDayMay++; 
+            first_day_of_may++; 
+        }
+
+        if(weekOfMonth == MDW_Week){
+            let day_found = "Monday";
+            let new_string = "#"+ day_found + "";
+            const holiday_dates = document.querySelectorAll(new_string);
+            holiday_dates.forEach(holiday_dates => {
+            holiday_dates.textContent = "H";})
+        }
+
        /* let day_found = "Monday";
         let new_string = "#"+ day_found + "";
         const holiday_dates = document.querySelectorAll(new_string);
@@ -157,10 +181,32 @@ if (month == 1 && weekOfMonth == 1) {
 }
 		
 	// Labor day
-    else if (month == 9 && dayMapId == 1 && weekOfMonth == 1) {
+    else if (month == 9) {
         console.log("Labor Day");
-        document.getElementById("com3").textContent="Happy Labor Day!";
-        document.getElementById("com2").textContent="No trash on Monday";
+        //document.getElementById("com3").textContent="Happy Labor Day!";
+        //document.getElementById("com2").textContent="No trash on Monday";
+
+        let startOfSept = startOfMonth.getDay(); 
+        let weekFoundSeptember = 1; 
+        console.log(startOfSept);
+
+        while(startOfSept != 1){
+            if(startOfSept == 7){
+                weekFoundSeptember++;
+                startOfSept = 0;
+            }
+            startOfSept++; 
+        }
+
+        if(weekOfMonth == weekFoundSeptember){
+            let day_found = "Monday";
+            let new_string = "#"+ day_found + "";
+            const holiday_dates = document.querySelectorAll(new_string);
+            holiday_dates.forEach(holiday_dates => {
+            holiday_dates.textContent = "H";})
+        }
+
+
         /*let day_found = "Monday";
         let new_string = "#"+ day_found + "";
         const holiday_dates = document.querySelectorAll(new_string);
