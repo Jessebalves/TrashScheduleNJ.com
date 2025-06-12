@@ -24,15 +24,21 @@ button{
     background-color: lightblue;
     font-size: 90%;
     font-weight: bold;
-    width:20%;
 }
 
+#trash_table{
+    width: 50%;
+    height: 100%;
+    border: 2px solid;
+    background-color: lightblue;
+}
 
 #testo1{
     display: inline-block;
     margin: auto; 
     width: 100%;
-    /*border:2px solid black;*/
+    border: 1px solid gray;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
@@ -69,9 +75,18 @@ button{
 }
 
 /* This section of CSS is designated for phone screen viewing */
-@media screen and (max-width:600px){
+@media screen and (max-width:650px){
     #trash_table{
         font-size: 90%;
+    }
+    #profile_pic{
+        width:25%;
+    }
+    #GitHub_Icon{
+        width:10%;
+    }
+    #LIN{
+        width:10%;
     }
     #testo2{
         margin-left: -10%;
