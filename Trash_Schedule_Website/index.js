@@ -320,10 +320,26 @@ document.getElementById('test_server').addEventListener('submit', async (a) => {
         console.log('Successful',data);
         let testo = data;
         console.log(testo);
+        // Ward function only for Elizabeth -- markup table for trash
+        if (data < 4){// checks if ward is 1, 2, or 3 then marks table days for trash for Monday & Thursday
+            let garbageTable = document.getElementsByClassName("Garbage")
+            for (i = 0; i < garbageTable.length; i++){
+                garbageTable[i].innerHTML = "-";
+            }
+            garbageTable[1].innerHTML = "X";
+            garbageTable[4].innerHTML = "X";
+        }
+        else if(data > 3){// checks if ward is 4, 5, or 6 then marks table days for trash Tuesday & Friday
+            let garbageTable = document.getElementsByClassName("Garbage")
+            for (i = 0; i < garbageTable.length; i++){
+                garbageTable[i].innerHTML = "-";
+            }
+            garbageTable[2].innerHTML = "X";
+            garbageTable[5].innerHTML = "X";
+        }
     })
     .catch(error => {
         console.error('Error:', error);
     });
 
 })
-
