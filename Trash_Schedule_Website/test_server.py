@@ -28,7 +28,7 @@ print("\n")
 cursor.execute("SELECT * FROM addresses")
 myresult = cursor.fetchall()
 #print(myresult)
-for x in myresult: 
+"""for x in myresult: 
     if x[0] == "ELM ST":
         print("Street Name: ", x[0])
         print("Low Range: ", x[1])
@@ -36,7 +36,7 @@ for x in myresult:
         print("Side: ",x[3])
         print("Zipcode: ",x[4])
         print("Ward:",x[-1])
-        print("\n")
+        print("\n")"""
 
 app = Flask(__name__)
 CORS(app)
@@ -59,19 +59,82 @@ def handle_data():
         print("The address supplied was: ",value)
         print("\n")
         random_variable = value
+
+        pieces = value.split()
+        prepped_address = ''
+        print(pieces)
+
+        #Send error message back to front end if the user input is shorter than 4 words
+        #the input from the front end should be something like "142 Elm Street 07208"
+        #if len(pieces) < 4: 
+        #    return jsonify('error')
+        
+        for i in range(1,len(pieces)-1):
+            prepped_address += pieces[i] + ' '
+
+
+        house_number = pieces[0]
+        zip_code = pieces[-1]
+
+        print("House number: ",house_number)
+        print("Prepped address: ", prepped_address)
+        print("Zipcode: ",zip_code)
+
+    print("What im testing:", prepped_address)
+
+    part2 = prepped_address.split()
+    typeOf = part2[-1]
+    print("TEsting: :", typeOf)
+    if typeOf in ['street','St', 'STREET', 'ST','Street']:
+        typeOf = "ST"
+        print("we hit this condition")
+    print(typeOf)
+
+    fully_prepped = part2[0].upper() +" "+ typeOf
+    print(fully_prepped)
+
+    new_string = prepped_address.upper()
+    ward_number = 0
+
+    for x in myresult:
+        if fully_prepped == x[0]+"":
+            if x[1] > int(house_number):
+                continue
+            elif int(house_number) > x[2]:
+                continue
+            if int(house_number) % 2 == 0 and x[3] == "E":
+                print("We finally hit this condition")
+                print("Street Name: ", x[0].lower())
+                print("Low Range: ", x[1])
+                print("High Range: ",x[2])
+                print("Side: ",x[3])
+                print("Zipcode: ",x[4])
+                print("Ward:",x[-1])
+                ward_number += x[-1]
+                print("\n")
+            elif int(house_number) % 2 !=0 and x[3] == "O":
+                print("Ward: ",x[-1])
+                ward_number += x[-1]
+                print(ward_number)
+        
     
-    for x in myresult: 
-        if x[0] == value:
+    """for x in myresult: 
+        print(type(x[0]))
+        #print(x[0])
+        #print(prepped_address.upper())
+        if str(x[0]) == prepped_address.upper():
             print("Street Name: ", x[0].lower())
             print("Low Range: ", x[1])
             print("High Range: ",x[2])
             print("Side: ",x[3])
             print("Zipcode: ",x[4])
             print("Ward:",x[-1])
-            print("\n")
+            print("\n")"""
 
-
-    return jsonify(random_variable)
+    if 0 < ward_number:
+        return jsonify(ward_number)
+    else:
+        return jsonify('error')
 
 
 #Main
