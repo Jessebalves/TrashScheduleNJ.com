@@ -249,7 +249,7 @@ if (month == 1 && weekOfMonth == 1) {
         }
 
         let testo = date.getDay(fourth);
-        document.getElementById("com2").textContent="No trash on "+dayMap.get(testo);
+        //document.getElementById("com2").textContent="No trash on "+dayMap.get(testo);
         isHoliday = true;
 		}
     
@@ -317,11 +317,15 @@ document.getElementById('test_server').addEventListener('submit', async (a) => {
     })
     .then(response => response.json())
     .then(data => {
+        if(data == "error"){
+            console.log("Error occured")
+        }
+        else{
         console.log('Successful',data);
         let testo = data;
-        console.log(testo);
-        // Ward function only for Elizabeth -- markup table for trash
-        if (data < 4){// checks if ward is 1, 2, or 3 then marks table days for trash for Monday & Thursday
+        console.log("Ward number recieved from back end: ", testo);
+
+        if(data < 4){
             let garbageTable = document.getElementsByClassName("Garbage")
             for (i = 0; i < garbageTable.length; i++){
                 garbageTable[i].innerHTML = "-";
@@ -337,9 +341,20 @@ document.getElementById('test_server').addEventListener('submit', async (a) => {
             garbageTable[2].innerHTML = "X";
             garbageTable[5].innerHTML = "X";
         }
+        }
     })
     .catch(error => {
         console.error('Error:', error);
     });
 
+})
+
+document.getElementById("test_server").addEventListener('reset', async(b) =>{
+    b.preventDefault();
+    let garbageTable = document.getElementsByClassName("Garbage");
+    for (i = 0; i < garbageTable.length; i++){
+        garbageTable[i].innerHTML = "-";
+        }
+    let consto = document.getElementById("address").value = "";
+    console.log(consto); 
 })

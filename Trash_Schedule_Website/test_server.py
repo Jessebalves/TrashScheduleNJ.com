@@ -13,7 +13,7 @@ dataBase = mysql.connector.connect(
     host='localhost',
     user = 'root',
     password = 'Rando15*',
-    database = 'mytestdb'
+    database = 'trashschedule'
     )    
 
 cursor = dataBase.cursor()
@@ -84,20 +84,33 @@ def handle_data():
 
     part2 = prepped_address.split()
     typeOf = part2[-1]
-    print("TEsting: :", typeOf)
+    print("Testing: ", part2)
+
+    fully_prepped= ""
+
+    for item in part2:
+        if item != typeOf:
+            fully_prepped += item + " "
+        else:
+            continue
+
+    #add to this
     if typeOf in ['street','St', 'STREET', 'ST','Street']:
         typeOf = "ST"
         print("we hit this condition")
     print(typeOf)
+    #print("LOOK: ", fully_prepped)
 
-    fully_prepped = part2[0].upper() +" "+ typeOf
-    print(fully_prepped)
+    #does not account for addressed that have "E" or "W" in the beginning 
+    fully_prepped += typeOf
 
-    new_string = prepped_address.upper()
+    print(fully_prepped.upper())
+
+    #new_string = prepped_address.upper()
     ward_number = 0
 
     for x in myresult:
-        if fully_prepped == x[0]+"":
+        if fully_prepped.upper() == x[0]+"":
             if x[1] > int(house_number):
                 continue
             elif int(house_number) > x[2]:
@@ -117,19 +130,6 @@ def handle_data():
                 ward_number += x[-1]
                 print(ward_number)
         
-    
-    """for x in myresult: 
-        print(type(x[0]))
-        #print(x[0])
-        #print(prepped_address.upper())
-        if str(x[0]) == prepped_address.upper():
-            print("Street Name: ", x[0].lower())
-            print("Low Range: ", x[1])
-            print("High Range: ",x[2])
-            print("Side: ",x[3])
-            print("Zipcode: ",x[4])
-            print("Ward:",x[-1])
-            print("\n")"""
 
     if 0 < ward_number:
         return jsonify(ward_number)
