@@ -1,6 +1,30 @@
+// Code altered from: https://www.geeksforgeeks.org/javascript/calculate-current-week-number-in-javascript/-------------------------------------------------
+//Function used to calculate the week of the year (test this)
+function getDateWeek(date) {
+    const currentDate = (typeof date === 'object') ? date : new Date();
+
+    const januaryFirst = new Date(currentDate.getFullYear(), 0, 1);
+    
+    const daysToNextMonday = (januaryFirst.getDay() === 1) ? 0 : (7 - januaryFirst.getDay()) % 7;
+    
+    const nextMonday =  new Date(currentDate.getFullYear(), 0, januaryFirst.getDate() + daysToNextMonday);
+
+    return (currentDate < nextMonday) ? 52 : 
+    (currentDate > nextMonday ? Math.ceil(
+    (currentDate - nextMonday) / (24 * 3600 * 1000) / 7) : 1);
+}
+
+//currentDate is a duplicate variable of date
+const currentDate = new Date();
+
+getDateWeek(currentDate);
+let weekNumber = getDateWeek()+1;
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+
 //Variable associated with current date
 const date = new Date(); 
 let isHoliday = false; 
+console.log("Current Date:",date);
 
 //Map (Numbers, Days of the Week)
 let dayMap = new Map();
@@ -26,6 +50,15 @@ const year = date.getFullYear();
 
 //Combining all the date variables to create a Full date string (Ex. 4/12/2025)
 const full_date = (String(month)+ "/" + String(month_day)+ "/" + String(year));
+
+//for some reason, the first week of the year is returned as 53, so we hardcode it to 1
+if(month == 1 && weekNumber == 53){
+    weekNumber = 1; 
+    console.log("Week number of " + date + " is : " + weekNumber);
+}
+else{
+console.log("Week number of " + date + " is : " + weekNumber);
+}
 
 //Start day of the given month(Ex. Tuesday May 1st, 2025)
 const startOfMonth = new Date(year, month - 1, 1);
@@ -328,18 +361,40 @@ document.getElementById('test_server').addEventListener('submit', async (a) => {
         if(data < 4){
             let garbageTable = document.getElementsByClassName("Garbage")
             for (i = 0; i < garbageTable.length; i++){
-                garbageTable[i].innerHTML = "-";
+                if (garbageTable[i].innerHTML == "H"){
+                    continue //skip if holiday is already marked with isHolday
+                }
+                else{
+                    garbageTable[i].innerHTML = "-";
+                }
             }
-            garbageTable[1].innerHTML = "X";
-            garbageTable[4].innerHTML = "X";
+            if (garbageTable[1] != "H"){ // if marked with '-' meaning if not marked with H write X otherwise leave alone.
+                garbageTable[1].innerHTML = "X";
+            }
+            if (garbageTable[4] != "H"){ // if marked with '-' meaning if not marked with H write X otherwise leave alone.
+                garbageTable[4].innerHTML = "X";
+            }
         }
         else if(data > 3){// checks if ward is 4, 5, or 6 then marks table days for trash Tuesday & Friday
             let garbageTable = document.getElementsByClassName("Garbage")
             for (i = 0; i < garbageTable.length; i++){
-                garbageTable[i].innerHTML = "-";
+                if(garbageTable[i].innerHTML == "H"){
+                    continue
+                }
+                else{
+                    garbageTable[i].innerHTML = "-";
+                }
             }
-            garbageTable[2].innerHTML = "X";
-            garbageTable[5].innerHTML = "X";
+
+
+            if(garbageTable[2].innerHTML != "H"){
+                garbageTable[2].innerHTML = "X";
+            }
+
+            if(garbageTable[5].innerHTML != "H"){
+                garbageTable[5].innerHTML = "X";
+            }
+
         }
         }
     })
@@ -353,7 +408,12 @@ document.getElementById("test_server").addEventListener('reset', async(b) =>{
     b.preventDefault();
     let garbageTable = document.getElementsByClassName("Garbage");
     for (i = 0; i < garbageTable.length; i++){
+        if(garbageTable[i].innerHTML == "H"){
+            continue
+        }
+        else{
         garbageTable[i].innerHTML = "-";
+        }
         }
     let consto = document.getElementById("address").value = "";
     console.log(consto); 
