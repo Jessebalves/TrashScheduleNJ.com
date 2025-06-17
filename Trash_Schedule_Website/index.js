@@ -1,24 +1,72 @@
-// Code altered from: https://www.geeksforgeeks.org/javascript/calculate-current-week-number-in-javascript/-------------------------------------------------
-//Function used to calculate the week of the year (test this)
-function getDateWeek(date) {
-    const currentDate = (typeof date === 'object') ? date : new Date();
+//STEP 1 - check if the current year is a leap year or not
 
-    const januaryFirst = new Date(currentDate.getFullYear(), 0, 1);
-    
-    const daysToNextMonday = (januaryFirst.getDay() === 1) ? 0 : (7 - januaryFirst.getDay()) % 7;
-    
-    const nextMonday =  new Date(currentDate.getFullYear(), 0, januaryFirst.getDate() + daysToNextMonday);
+const now = new Date();
+let nowo = now.getFullYear();
 
-    return (currentDate < nextMonday) ? 52 : 
-    (currentDate > nextMonday ? Math.ceil(
-    (currentDate - nextMonday) / (24 * 3600 * 1000) / 7) : 1);
+let isLeapYear = false; 
+if(nowo % 4 == 0){
+    isLeapYear = true; 
+    if(nowo % 100 == 0 && nowo % 400 != 0){
+        isLeapYear = false; 
+    }
+    else if(nowo % 100 == 0 && nowo % 400 ==0){
+        isLeapYear = true; 
+    }
+}
+else{
+    isLeapYear = false; 
 }
 
-//currentDate is a duplicate variable of date
-const currentDate = new Date();
+console.log("Is it a leap year: ", isLeapYear);
 
-getDateWeek(currentDate);
-let weekNumber = getDateWeek()+1;
+//STEP 2 - Figure out what number is associated with current day
+let x = 1; 
+let Jan1st = new Date(now.getFullYear(),0,x);
+let starto = Jan1st.getDay();
+let foundDay = false; 
+
+console.log("Month associated with Jan1st var:", Jan1st.getMonth());
+console.log("Month associated with now var:",now.getMonth());
+
+console.log("Month day associated with Jan1st var:",Jan1st.getDate());
+console.log("Month day associated with now var:",now.getDate());
+
+console.log("Todays date:",now);
+console.log("Date being tested:",Jan1st);
+
+let testo = Jan1st.getMonth(); 
+let testo0 = now.getMonth(); 
+let testo1 = Jan1st.getDate();
+let testo2 = now.getDate(); 
+
+while(foundDay == false){
+    x++; 
+    Jan1st = new Date(now.getFullYear(),0,x);
+    //console.log(Jan1st);
+    testo = Jan1st.getMonth();
+    testo1 = Jan1st.getDate(); 
+    if(testo == testo0 && testo1 == testo2){
+        foundDay = true; 
+    }
+}
+
+let weekNumber = 1; 
+let starto1 = 1; 
+console.log(starto);
+console.log("Number of days found:", x);
+
+while(starto1 <= x){
+    if(starto == 7){
+        weekNumber++;
+        starto = 0;  
+    }
+
+    starto++; 
+    starto1++; 
+}
+
+console.log("Week of year:",weekNumber);
+
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Variable associated with current date
@@ -50,15 +98,6 @@ const year = date.getFullYear();
 
 //Combining all the date variables to create a Full date string (Ex. 4/12/2025)
 const full_date = (String(month)+ "/" + String(month_day)+ "/" + String(year));
-
-//for some reason, the first week of the year is returned as 53, so we hardcode it to 1
-if(month == 1 && weekNumber == 53){
-    weekNumber = 1; 
-    console.log("Week number of " + date + " is : " + weekNumber);
-}
-else{
-console.log("Week number of " + date + " is : " + weekNumber);
-}
 
 //Start day of the given month(Ex. Tuesday May 1st, 2025)
 const startOfMonth = new Date(year, month - 1, 1);
@@ -368,10 +407,10 @@ document.getElementById('test_server').addEventListener('submit', async (a) => {
                     garbageTable[i].innerHTML = "-";
                 }
             }
-            if (garbageTable[1] != "H"){ // if marked with '-' meaning if not marked with H write X otherwise leave alone.
+            if (garbageTable[1].innerHTML != "H"){ // if marked with '-' meaning if not marked with H write X otherwise leave alone.
                 garbageTable[1].innerHTML = "X";
             }
-            if (garbageTable[4] != "H"){ // if marked with '-' meaning if not marked with H write X otherwise leave alone.
+            if (garbageTable[4].innerHTML != "H"){ // if marked with '-' meaning if not marked with H write X otherwise leave alone.
                 garbageTable[4].innerHTML = "X";
             }
         }
