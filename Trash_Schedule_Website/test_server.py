@@ -97,7 +97,15 @@ def handle_data():
     #add to this
     if typeOf in ['street','St', 'STREET', 'ST','Street']:
         typeOf = "ST"
-        print("we hit this condition")
+        #print("we hit this condition")
+    elif typeOf in ['road','Rd', 'ROAD', 'RD','Road']:
+        typeOf = "RD"
+    elif typeOf in ['boulevard','Blvd', 'BOULEVARD', 'BLVD','Boulevard']:
+        typeOf = "BLVD"
+    elif typeOf in ['avenue','Ave', 'AVENUE', 'AVE','Avenue']:
+        typeOf = "AVE"
+    elif typeOf in ['place','Pl', 'PLACE', 'PL','Place']:
+        typeOf = "PL"
     print(typeOf)
     #print("LOOK: ", fully_prepped)
 
@@ -139,4 +147,6 @@ def handle_data():
 
 #Main
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    from waitress import serve
+    serve(app, debug = False, host = "127.0.0.1", port= 5000)
+    #app.run(debug=False, port=5000)
