@@ -2,6 +2,7 @@
 #used to send recieve requests and send back data
 from flask import Flask, request, jsonify, render_template # type: ignore
 from flask_cors import CORS # type: ignore
+from waitress import serve #type: ignore
 #Connects test_server.py to MYSQL database on
 #MYSQL workbench
 import mysql.connector # type: ignore
@@ -16,28 +17,20 @@ dataBase = mysql.connector.connect(
     database = 'trashschedule'
     )    
 
+#variable associated with queries in database
 cursor = dataBase.cursor()
 cursor.execute("show databases")
-#myresult = cursor.fetchall()
 
 print("Connection to MYSQL database running on Localhost...")
+#print databases found in SQL server
 for x in cursor:
     print("Database found: ",x)
 print("\n")
 
 cursor.execute("SELECT * FROM addresses")
 myresult = cursor.fetchall()
-#print(myresult)
-"""for x in myresult: 
-    if x[0] == "ELM ST":
-        print("Street Name: ", x[0])
-        print("Low Range: ", x[1])
-        print("High Range: ",x[2])
-        print("Side: ",x[3])
-        print("Zipcode: ",x[4])
-        print("Ward:",x[-1])
-        print("\n")"""
 
+#Flask
 app = Flask(__name__)
 CORS(app)
 
@@ -58,16 +51,10 @@ def handle_data():
         print("Request received from Javascript!")
         print("The address supplied was: ",value)
         print("\n")
-        random_variable = value
 
         pieces = value.split()
         prepped_address = ''
         print(pieces)
-
-        #Send error message back to front end if the user input is shorter than 4 words
-        #the input from the front end should be something like "142 Elm Street 07208"
-        #if len(pieces) < 4: 
-        #    return jsonify('error')
         
         for i in range(1,len(pieces)-1):
             prepped_address += pieces[i] + ' '
@@ -80,12 +67,9 @@ def handle_data():
         print("Prepped address: ", prepped_address)
         print("Zipcode: ",zip_code)
 
-    print("What im testing:", prepped_address)
 
     part2 = prepped_address.split()
     typeOf = part2[-1]
-    print("Testing: ", part2)
-
     fully_prepped= ""
 
     for item in part2:
@@ -94,7 +78,7 @@ def handle_data():
         else:
             continue
 
-    #add to this
+    #Conversion of "Road" to "RD", needed for string comparison
     if typeOf in ['street','St', 'STREET', 'ST','Street']:
         typeOf = "ST"
         #print("we hit this condition")
@@ -106,15 +90,8 @@ def handle_data():
         typeOf = "AVE"
     elif typeOf in ['place','Pl', 'PLACE', 'PL','Place']:
         typeOf = "PL"
-    print(typeOf)
-    #print("LOOK: ", fully_prepped)
 
-    #does not account for addressed that have "E" or "W" in the beginning 
     fully_prepped += typeOf
-
-    print(fully_prepped.upper())
-
-    #new_string = prepped_address.upper()
     ward_number = 0
 
     for x in myresult:
@@ -124,21 +101,14 @@ def handle_data():
             elif int(house_number) > x[2]:
                 continue
             if int(house_number) % 2 == 0 and x[3] == "E":
-                print("We finally hit this condition")
-                print("Street Name: ", x[0].lower())
-                print("Low Range: ", x[1])
-                print("High Range: ",x[2])
-                print("Side: ",x[3])
-                print("Zipcode: ",x[4])
                 print("Ward:",x[-1])
                 ward_number += x[-1]
                 print("\n")
             elif int(house_number) % 2 !=0 and x[3] == "O":
                 print("Ward: ",x[-1])
                 ward_number += x[-1]
-                print(ward_number)
         
-
+    #Return back to the front end
     if 0 < ward_number:
         return jsonify(ward_number)
     else:
@@ -147,6 +117,4 @@ def handle_data():
 
 #Main
 if __name__ == '__main__':
-    from waitress import serve
-    serve(app, debug = False, host = "127.0.0.1", port= 5000)
-    #app.run(debug=False, port=5000)
+    serve(app, host = "127.0.0.1", port= 5000)

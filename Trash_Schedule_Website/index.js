@@ -150,12 +150,7 @@ let LastWeekInYear = getCurrentWeekNumber(LastSundayInYear);
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-
-
-
-
-
-//Unnamed and unorganized section!
+//Creating variables for date logic 
 //Map (Numbers, Days of the Week)
 let dayMap = new Map();
 dayMap.set(0, "Sunday");
@@ -457,8 +452,7 @@ if (currentWeekInYear == 1) {
 console.log("Checking if this Week has a holiday: "+isHoliday);
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
 
-//unorganized
-//table check variables
+//Variables associated elements within the rows in the Trash Table
 let garbageTable = document.getElementsByClassName("Garbage");
 let paperTable = document.getElementsByClassName("Paper")
 let metalTable = document.getElementsByClassName("Metal")
