@@ -526,7 +526,7 @@ document.getElementById('test_server').addEventListener('submit', async (a) => {
                 garbageTable[4].innerHTML = "X";
             }
             if (garbageTable[4].innerHTML == "H"){
-                garbageTable[4].innerHTML = "X";
+                garbageTable[5].innerHTML = "X";
             }
         }
         else if(data > 3){// checks if ward is 4, 5, or 6 then marks table days for trash Tuesday & Friday
