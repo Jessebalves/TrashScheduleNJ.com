@@ -492,10 +492,16 @@ document.getElementById('test_server').addEventListener('submit', async (a) => {
             if(paperTable[3].innerHTML != "H"){
                 paperTable[3].innerHTML = "X";
             }
+            if(paperTable[3].innerHTML == "H"){
+                paperTable[4].innerHTML = "X";
+            }
         }
         else{
            if(metalTable[3].innerHTML != "H"){ //odd weeks are paper even weeks are metals/plastic next week (1/1/2024) should be week 1 and should X on metal
                 metalTable[3].innerHTML = "X";
+            } 
+            if(metalTable[3].innerHTML != "H"){ //odd weeks are paper even weeks are metals/plastic next week (1/1/2024) should be week 1 and should X on metal
+                metalTable[4].innerHTML = "X";
             } 
         }
 
@@ -513,7 +519,13 @@ document.getElementById('test_server').addEventListener('submit', async (a) => {
             if (garbageTable[1].innerHTML != "H"){ // if marked with '-' meaning if not marked with H write X otherwise leave alone.
                 garbageTable[1].innerHTML = "X";
             }
+            if (garbageTable[1].innerHTML == "H"){
+                garbageTable[2].innerHTML = "X";
+            }
             if (garbageTable[4].innerHTML != "H"){ // if marked with '-' meaning if not marked with H write X otherwise leave alone.
+                garbageTable[4].innerHTML = "X";
+            }
+            if (garbageTable[4].innerHTML == "H"){
                 garbageTable[4].innerHTML = "X";
             }
         }
@@ -533,8 +545,16 @@ document.getElementById('test_server').addEventListener('submit', async (a) => {
                 garbageTable[2].innerHTML = "X";
             }
 
+            if(garbageTable[2].innerHTML == "H"){
+                garbageTable[3].innerHTML = "X";
+            }
+
             if(garbageTable[5].innerHTML != "H"){
                 garbageTable[5].innerHTML = "X";
+            }
+
+            if(garbageTable[5].innerHTML == "H"){
+                garbageTable[6].innerHTML = "X";
             }
 
         }
