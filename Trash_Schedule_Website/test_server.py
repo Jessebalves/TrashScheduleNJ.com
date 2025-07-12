@@ -6,16 +6,8 @@ from waitress import serve #type: ignore
 #Connects test_server.py to MYSQL database on
 #MYSQL workbench
 import mysql.connector # type: ignore
-
-
-#This is code that connects us to our MYSQL database
-#These are the credentials of the MYSQL server we are connecting this python file to 
-dataBase = mysql.connector.connect(
-    host='localhost',
-    user = 'root',
-    password = 'Rando15*',
-    database = 'trashschedule'
-    )    
+#import DB credentials from secret file to ensure security
+from secrets import dataBase
 
 #variable associated with queries in database
 cursor = dataBase.cursor()
