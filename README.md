@@ -48,7 +48,7 @@ Flask tutorial (Python backend) : https://www.geeksforgeeks.org/flask-tutorial/-
 </details>
 
 ## Summary
-*Missed garbage day? Never forget your trash schedule again with https://trashschedulenj.com!*
+*Missed garbage day? Never forget your trash schedule again with https://trashschedulenj.com! This project is for residents of Elizabeth, New Jersey to check their trash schedule depending upon the week and ward the user resides in.*
 
 ## Features
 <!--List the standout features of your project and what makes it unique.-->
