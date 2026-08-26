@@ -54,6 +54,7 @@ Flask tutorial (Python backend) : https://www.geeksforgeeks.org/flask-tutorial/-
 <!--List the standout features of your project and what makes it unique.-->
 - **Garbage Check**: Enter address followed by zipcode to check trashschedule.
 - **Holiday Check**: System accounts for holidays and garbage pickup date changes due to holidays.
+- **Reset Table: Reset the entire table to the initial state using the reset button.
 
 ## Visuals
 <!--*Insert images or gifs showing your project in action. Consider before/after shots, workflows, or demos.*-->
@@ -73,7 +74,7 @@ Flask tutorial (Python backend) : https://www.geeksforgeeks.org/flask-tutorial/-
 - CloudFlare
 
 ## What I Learned
-Highlight specific skills or concepts you learned or improved upon while working on this project. This section should directly address potential employer interests.
+<!-- Highlight specific skills or concepts you learned or improved upon while working on this project. This section should directly address potential employer interests. -->
 - **Flask**: Connected our frontend to our backend using a web framework and Python.
 - **Database Connectivity**: Setting up and connecting a database that allows for data retrieval from the frontend.
 - **Server Deployment and Configuration**: Setting up a Linux cloud server using Digital Ocean to serve web contents to clients.
@@ -95,8 +96,8 @@ Highlight specific skills or concepts you learned or improved upon while working
 
 
 ## How to Contribute
-*Encourage contributions and provide guidelines for how others can help.*
-
+<!--*Encourage contributions and provide guidelines for how others can help.*-->
+Our system uses Flask on the backend, feel free to connect your own database through the python file as we do not offer public access to the database for this project. If you would like to connect your own database, keep in mind that the ward look up and the process which data is passed from the backend to the frontend will have to be reworked. The main table will have to be reworked if you would like to add a new pick up type, such as grass and leaves. 
 
 ## Contact
 <!--- *First and last name* - *Email address*-->
@@ -105,6 +106,6 @@ Highlight specific skills or concepts you learned or improved upon while working
 <!--- *Any other contact information*-->
 
 ## Acknowledgments
-*Credits to individuals or resources that helped you during the project.*
-
+<!--*Credits to individuals or resources that helped you during the project.*-->
+- elizabethnj.org : https://www.elizabethnj.org/288/Garbage-and-Recycling-Calendar
 ---
