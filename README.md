@@ -54,7 +54,7 @@ Flask tutorial (Python backend) : https://www.geeksforgeeks.org/flask-tutorial/-
 <!--List the standout features of your project and what makes it unique.-->
 - **Garbage Check**: Enter address followed by zipcode to check trashschedule.
 - **Holiday Check**: System accounts for holidays and garbage pickup date changes due to holidays.
-- **Reset Table: Reset the entire table to the initial state using the reset button.
+- **Reset Table**: Reset the entire table to the initial state using the reset button.
 
 ## Visuals
 <!--*Insert images or gifs showing your project in action. Consider before/after shots, workflows, or demos.*-->
